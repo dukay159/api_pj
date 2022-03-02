@@ -40,7 +40,7 @@
 </head>
 
 <body>
-<!--header-top-starts-->
+    <!--header-top-starts-->
     <div class="header-top">
         <div class="container">
             <div class="head-main">
@@ -57,25 +57,24 @@
                 <div class="navigation">
                     <span class="menu"></span>
                     <ul class="navig">
-                        <li><a href="{{url('/')}}" class="active">Home</a></li>
-						<li><a href="{{route('customer.create')}}">User Post</a></li>
-						<li><a href="{{route('customer.index')}}">User List</a></li>
-						<li><a href="{{route('category.create')}}">Post</a></li>
-						<li><a href="{{route('category.index')}}">Danh muc</a></li>
+                        <li><a href="{{route('customer.create')}}">User Post</a></li>
+                        <li><a href="{{route('customer.index')}}">User List</a></li>
+                        <li><a href="{{route('category.create')}}">Post</a></li>
+                        <li><a href="{{route('category.index')}}">Danh muc</a></li>
                     </ul>
                 </div>
-   
+
                 <div class="header-right">
-    <!-- search -->
-                <form action="{{ route('customers.getSearch') }}" method="GET">
-                    @csrf
-                    <div class="search-bar">
-                        <input type="text" name="key" placeholder="Search....">
-                        <button type="submit" value="Search" name="search">Search</button>
-                    </div>
-                </form>
-                    
-        <!-- end search             -->
+                    <!-- search -->
+                    <form action="" method="GET">
+                        <!-- @csrf -->
+                        <div class="search-bar">
+                            <input name="key" placeholder="Search....">
+                            <button type="submit" value="Search" name="search">Search</button>
+                        </div>
+                    </form>
+
+                    <!-- end search -->
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -88,7 +87,7 @@
             $(" ul.navig").slideToggle("slow", function() {});
         });
     </script>
-<!-- script-for-menu -->
+    <!-- script-for-menu -->
     <div class="container">
         @if(Session::has('success'))
         <div class="alert alert-success">
@@ -100,9 +99,9 @@
             <p>{{Session::get('failure')}}</p>
         </div>
         @endif
-        
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+
+        <div style="margin: 10px;" class="row justify-content-center">
+            <div class="col-md-12">
                 <div class="card">
                     <table class="table">
                         <thead>
@@ -134,7 +133,7 @@
                                 <th scope="row">{{$p->address_customer}}</th>
                                 <th scope="row">{{$p->email_customer}}</th>
                                 <th scope="row">{{$p->city_customer}}</th>
-                                
+
                                 <td>
                                     <form action="{{ route('customer.destroy', ['customer' => $p->id_customer]) }}" method="POST">
                                         @method('DELETE')
@@ -148,9 +147,17 @@
                         </tbody>
                     </table>
                 </div>
+                <div style="margin: 5px;">
+                    {{ $customers->appends(request()->all())->links() }}
+                </div>
+                
             </div>
         </div>
     </div>
+    <hr>
+    <!-- <div class="">
+        {{$customers->appends(request()->all())->links()}}
+    </div> -->
     <!-- main start -->
     <!--footer-starts-->
 

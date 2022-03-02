@@ -17,7 +17,10 @@ class CustomerController extends Controller
     public function index()
     {
         //show
-        $customers = Customer::all();
+        $customers = Customer::orderBy('id_customer','DESC')->paginate(15);
+        if($key = request()->key){
+            $customers = Customer::orderBy('id_customer','DESC')->where('name_customer','like','%'.$key.'%')->paginate(15);
+        }
         //dd($customers);
         return view('layouts.indexUser')->with(compact('customers'));
         //return new CustomerCollection(Customer::paginate(10)); //phaan trang
@@ -72,7 +75,9 @@ class CustomerController extends Controller
         // return new CustomerResource($customer);
 
         $customers = Customer::find($customer);
-        return view('layouts.showUser')->with(compact('customers'));
+        return view('layouts.showUser',[
+            'customer' => $customer->customer()->latest()->paginate(10)
+        ])->with(compact('customers'));
     }
 
     /**
@@ -135,10 +140,17 @@ class CustomerController extends Controller
         // return view('pages.layout', ['customer' => $customer]);
     }
 
-    public function getSearch(Request $request)
+    public function getSearch()
     {
         $key = $_GET['key'];  
-        echo $key;           
-
+        echo $key;       
+        // $customers = Customer::with('customer')->where('name_customer','LIKE','%'.$key.'%')
+        //                                     ->orWhere('city_customer','like','%'.$key.'%')                    
+        //                                     ->orWhere('phone_customer',$key)
+        //                                     ->get();
+        // return view('layouts.userSearch');  
+        
+        //$customer = Customer::where('name_customer','like','%'.$request->key.'%')
+                
     }
 }

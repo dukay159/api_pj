@@ -57,7 +57,6 @@
                 <div class="navigation">
                     <span class="menu"></span>
                     <ul class="navig">
-                        <li><a href="{{url('/')}}" class="active">Home</a></li>
 						<li><a href="{{route('customer.create')}}">User Post</a></li>
 						<li><a href="{{route('customer.index')}}">User List</a></li>
 						<li><a href="{{route('category.create')}}">Post</a></li>
