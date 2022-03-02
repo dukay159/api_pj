@@ -19,7 +19,11 @@ class CustomerController extends Controller
         //show
         $customers = Customer::orderBy('id_customer','DESC')->paginate(15);
         if($key = request()->key){
-            $customers = Customer::orderBy('id_customer','DESC')->where('name_customer','like','%'.$key.'%')->paginate(15);
+            $customers = Customer::orderBy('id_customer','DESC')->where('name_customer','like','%'.$key.'%')
+                                                                ->orWhere('city_customer','like','%'.$key.'%')                    
+                                                                ->orWhere('phone_customer',$key)
+                                                                ->orWhere('email_customer',$key)
+                                                                ->paginate(5);
         }
         //dd($customers);
         return view('layouts.indexUser')->with(compact('customers'));
