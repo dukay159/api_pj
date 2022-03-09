@@ -17,11 +17,11 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            'name_customer' => $this->faker->firstname,
-            'phone_customer' => $this->faker->phoneNumber,
-            'address_customer' => $this->faker->address,
-            'email_customer' => $this->faker->unique()->safeEmail,
-            'city_customer' => $this->faker->city
+            'name' => $this->faker->firstname,
+            'phone' => $this->faker->phoneNumber,
+            'address' => $this->faker->address,
+            'email' => $this->faker->unique()->safeEmail,
+            'company' => $this->faker->company
         ];
     }
 }
@@ -29,10 +29,10 @@ class CustomerFactory extends Factory
 
 // $factory->define(Customer::class, function (Faker $faker) {
 //     return [
-//         'name_customer' => $faker->firstname,
-//         'phone_customer' => $faker->phoneNumber,
-//         'address_customer' => $faker->address,
-//         'email_customer' => $faker->unique()->safeEmail,
-//         'city_customer' => $faker->city
+//         'name' => $faker->firstname,
+//         'phone' => $faker->phoneNumber,
+//         'address' => $faker->address,
+//         'email' => $faker->unique()->safeEmail,
+//         'company' => $faker->company
 //     ];
 // });

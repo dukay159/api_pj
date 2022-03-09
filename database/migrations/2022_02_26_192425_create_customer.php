@@ -14,12 +14,12 @@ class CreateCustomer extends Migration
     public function up()
     {
         Schema::create('customer', function (Blueprint $table) {
-            $table->id('id_customer');
-            $table->string('name_customer');
-            $table->string('phone_customer');
-            $table->string('address_customer');
-            $table->string('email_customer');
-            $table->string('city_customer');
+            $table->id('id');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('email');
+            $table->string('company');
             $table->timestamps();
         });
     }

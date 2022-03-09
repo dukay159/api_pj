@@ -9,9 +9,9 @@ class Customer extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'name_customer', 'phone_customer', 'address_customer', 'email_customer', 'city_customer'
+        'name', 'phone', 'address', 'email', 'company'
     ];
-    protected $primaryKey = 'id_customer';
-    protected $table = 'customer';
+    protected $primaryKey = 'id';
+    protected $table = 'customers';
     use HasFactory;
 }

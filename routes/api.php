@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::get('customer/search', [CustomerController::class, 'getSearch'])->name('getSearch');
 
 

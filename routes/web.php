@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\BaiVietController;
-use App\Http\Controllers\HomeController;
+
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +16,6 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-
-Route::get('/post/{id}', [BaiVietController::class, 'show']);
-
-Auth::routes();
-
-Route::get('/home', [LoginController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('pages.home');
+});
